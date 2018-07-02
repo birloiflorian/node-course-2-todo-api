@@ -28,16 +28,16 @@ app.post('/todos', (req, res) => {
 });
 
 //configure get request
-// app.get('/todos', (req, res) => {
-//     Todo.find().then((todos) => {
-//         //more flexible to use object
-//         res.send({
-//             todos
-//         });
-//     }, (e) => {
-//         res.status(400).send(e);
-//     });
-// });
+app.get('/todos', (req, res) => {
+    Todo.find().then((todos) => {
+        //more flexible to use object
+        res.send({
+            todos
+        });
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
 
 //fetch a single todo
 //GET /todos/id
