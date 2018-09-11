@@ -17,6 +17,12 @@ var User = mongoose.model('User', {
         required: true,
         minlength: 1,
         trim: true
+    },
+    password: {
+        type: String,
+        requireed: true,
+        minlength: 1,
+        trim: true
     }
 });
 

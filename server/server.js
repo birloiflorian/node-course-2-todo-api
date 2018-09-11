@@ -19,6 +19,27 @@ var port = process.env.PORT;
 //give this middleware to expressb
 app.use(bodyParser.json());
 
+app.post('/user', (req, res) => {
+    var user = new User({
+        email: req.body.username,
+        password: req.body.password
+    });
+
+    user.save().then((doc) => {
+        res.send(doc);
+    }).catch((err) => {
+        res.status(400).send(err);
+    })
+});
+
+app.post('/login', (req, res) => {
+    User.find({ email: req.body.username, password: req.body.password}).then((doc) => {
+        res.send(doc);
+    }).catch((err) => {
+        res.status(400).send(err);
+    })
+})
+
 //configure post route
 app.post('/todos', (req, res) => {
     var todo = new Todo({
