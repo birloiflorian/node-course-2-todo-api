@@ -38,7 +38,15 @@ app.post('/login', (req, res) => {
     }).catch((err) => {
         res.status(400).send(err);
     })
-})
+});
+
+app.get('/user', (req, res) => {
+    User.find().then((doc) => {
+        res.send(doc);
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
+});
 
 //configure post route
 app.post('/todos', (req, res) => {
