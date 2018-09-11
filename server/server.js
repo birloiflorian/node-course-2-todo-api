@@ -34,6 +34,10 @@ app.post('/user', (req, res) => {
 
 app.post('/login', (req, res) => {
     User.find({ email: req.body.username, password: req.body.password}).then((doc) => {
+        if(doc.length <= 0){
+            return res.status(404).send({message: 'User not found'});
+        }
+
         res.send(doc);
     }).catch((err) => {
         res.status(400).send(err);
