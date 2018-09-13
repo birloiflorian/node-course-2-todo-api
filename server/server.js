@@ -202,7 +202,7 @@ app.get('/reservation', (req, res) => {
 
 //add reservation
 app.post('/reservation', (req, res) => {
-    var res = new Reservation({
+    var reservation = new Reservation({
         name: req.body.name,
         roomId: req.body.roomId,
         userId: req.body.userId,
@@ -210,7 +210,7 @@ app.post('/reservation', (req, res) => {
         endDate: req.body.endDate
     });
 
-    res.save().then((doc) => {
+    reservation.save().then((doc) => {
         res.send(doc);
     }).catch((err) => {
         res.status(400).send(err);
@@ -219,13 +219,13 @@ app.post('/reservation', (req, res) => {
 
 //add room
 app.post('/room', (req, res) => {
-    var res = new Room({
+    var room = new Room({
         name: req.body.name,
         floor: req.body.floor,
         building: req.body.building
     });
 
-    res.save().then((doc) => {
+    room.save().then((doc) => {
         res.send(doc);
     }).catch((err) => {
         res.status(400).send(err);
