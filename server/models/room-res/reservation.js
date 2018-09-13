@@ -9,8 +9,8 @@ var Reservation = mongoose.model('Reservation', {
         maxlength: 10,
         trim: true
     },
-    roomId: ObjectID,
-    userId: ObjectID,
+    roomId: String,
+    userId: String,
     startDate: {
         type: Date,
         required: true
