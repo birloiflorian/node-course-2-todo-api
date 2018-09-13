@@ -281,32 +281,27 @@ app.patch('/room/:id', (req, res) => {
 //init users
 function initUsers() {
     var users = [
-        {
+        new UserRoom({
             username: 'florian',
             password: 'parola12',
             email: 'florian@email.com',
             type: 'admin'
-        },
-        {
+        }),
+        new UserRoom({
             username: 'adriana',
             password: 'parola12',
             email: 'adriana@email.com',
             type: 'normal'
-        },
-        {
+        }),
+        new UserRoom({
             username: 'georgiana',
             password: 'parola12',
             email: 'adriana@email.com',
             type: 'normal'
-        }
+        })
     ]
 
-    return Promise.all(
-        users.map(user => {
-            var curr = new UserRoom(user);
-            return user.save();
-        })
-    );
+    return Promise.all(users.map(user => user.save()));
 }
 
 
