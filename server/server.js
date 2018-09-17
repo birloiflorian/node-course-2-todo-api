@@ -257,6 +257,31 @@ app.delete('/room/:id', (req, res) => {
     });
 });
 
+app.delete('/reservation/:id', (req, res) => {
+    //get the id
+    var id = req.params.id;
+
+    //validate the id => not valid return 404
+    if(!ObjectID.isValid(id)){
+        return res.status(404).send();
+    }
+
+    // remove todo by id
+    Reservation.findByIdAndRemove(id).then((room) => {
+        //success
+        //if no doc => 404
+        if(!room){
+            return res.status(404).send();
+        }
+
+        //if doc, send back doc with 100
+        res.send({room});
+    }).catch((e) => {
+        // error -> 400 empty body
+        res.status(400).send();
+    });
+});
+
 app.patch('/room/:id', (req, res) => {
     var id = req.params.id;
     //pick only what you want to update
