@@ -12,12 +12,16 @@ var Reservation = mongoose.model('Reservation', {
     roomId: String,
     userId: String,
     startDate: {
-        type: String,
-        required: true
+        type: Number,
+        required: true,
+        min: 1000000000000,
+        max: 9999999999999
     },
     endDate: {
-        type: String,
-        required: true
+        type: Number,
+        required: true,
+        min: 1000000000000,
+        max: 9999999999999
     }
 });
 
