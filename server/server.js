@@ -3,6 +3,8 @@ require('./config/config');
 
 const _ = require('lodash');
 
+var cors = require('cors')
+
 const express = require('express');
 //get json and convert in an object
 const bodyParser = require('body-parser');
@@ -20,6 +22,7 @@ var {Reservation} = require('./models/room-res/reservation');
 
 
 var app = express();
+app.use(cors());
 var port = process.env.PORT;
 
 //give this middleware to expressb
